@@ -7,12 +7,12 @@ password
 
 
 
-CREATE TABLE USER (
+CREATE TABLE all_users (
     `id` int AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR(20) NOT NULL DEFAULT '',
     `surname` VARCHAR(20) NOT NULL DEFAULT '',
     `birthday` DATE,
-    `email` VARCHAR(20) NOT NULL,
+    `email` VARCHAR(50) NOT NULL,
     `password` VARCHAR(20)
 );
 
