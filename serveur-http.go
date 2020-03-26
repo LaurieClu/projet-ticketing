@@ -10,6 +10,7 @@ func main() {
     fmt.Println("Server Starting")
     http.ListenAndServe(":80", nil)
 }
+<a href="./index.html">Index</a>
 
 func Inscription(w http.ResponseWriter, r *http.Request){
 fmt.Fprintf(w, "Inscription, %s!", r.URL.Path[1:])
