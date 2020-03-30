@@ -1,8 +1,9 @@
-
 package main
 
-import "fmt"
-import "net/http"
+import (
+	"fmt"
+	"net/http"
+)
 
 func SimpleIndexHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Hello %s!", r.URL.Path[1:])
