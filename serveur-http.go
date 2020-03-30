@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"html/template"
 	"net/http"
+	"io"
 )
 
 type Nouveaux struct {
@@ -16,7 +17,6 @@ func indexHTMLTemplateVariableHandler(w http.ResponseWriter, r *http.Request) {
 	p := Nouveaux{Id: 1, Name: "chavdif"}
 
 	tmplt.Execute(w, p)
-
 }
 
 func main() {
@@ -28,4 +28,12 @@ func main() {
 
 func Inscription(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Inscription, %s!", r.URL.Path[1:])
+	v := req.FormValue("q")
+w.Header().Set("Content-Type", "text/html; charset=utf-8")
+io.WriteString(w,
+<form method="POST">
+<input type="text" name="q">
+<input type="envoyer">
+</form>
+<br>`+v)
 }
