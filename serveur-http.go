@@ -11,6 +11,7 @@ func main() {
 	//http.HandleFunc("/", Inscription)
 	http.HandleFunc("/index", serveFiles)
 	http.ListenAndServe(":80", nil)
+
 }
 
 func serveFiles(response http.ResponseWriter, request *http.Request) {
