@@ -8,17 +8,24 @@ import (
 func main() {
 
 	fmt.Println("Server Starting")
-	//http.HandleFunc("/", Inscription)
 	http.HandleFunc("/index", serveFiles)
 	http.ListenAndServe(":80", nil)
-
 }
 
 func serveFiles(response http.ResponseWriter, request *http.Request) {
 	http.ServeFile(response, request, "index.html")
+
+	if err := request.ParseForm(); err != nil {
+		fmt.Fprintf(response, "ParseForm() err: %v", err)
+		return
+	}
+	fmt.Fprintf(response, "Post from website! r.PostFrom = %v\n", request.PostForm)
+
+	fmt.Println("age :", request.FormValue("Age"))
+	fmt.Println("nom :", request.FormValue("nom"))
+	fmt.Println("Prénom :", request.FormValue("prenom"))
+	fmt.Println("user-password :", request.FormValue("user-password"))
+	fmt.Println("Email:", request.FormValue("email"))
+	fmt.Println("Email:", request.Form.Get("email"))
+
 }
-
-//func serveFile(w http.ResponseWriter, r *http.Request) {
-//	http.ServeFile(w, r, p)
-
-//func Inscription(w http.ResponseWriter, r *http.Request) {

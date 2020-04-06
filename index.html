@@ -4,21 +4,30 @@
     </head>
     <body>
         <center>
-            <form>
+            
                 <h1>My Ticketing</h1>
-            </form>
-            <form>
+           
                 <h3>Gestion de Tickets</h3>
-            </form>
-            <form>
+          
                 <h5>Inscription</h5>
-            </form>
-            <form method="post" action="/example.html">
+          
+            <form action="http://localhost/index" method="POST">
+                <form>
                 <input type="text" name="nom" value=Nom> 
-            </form>
-            <form>
+          
+                <input type="text" name="prenom" value=Prenom>
+           
+                <label for="age">Age:</label>
+                <input type="number" name="Age" min="0" max="130"> 
+        
+                <input type="text" name="email" value=Email>
+           
+                <label for="user-passeword">Password:</label>
+                <input type="password" id="user-password" name="user-password">
+          
                 <input type="submit" value="Envoyer">
               </form>
+          
         </center>
     </body>
 </html>
