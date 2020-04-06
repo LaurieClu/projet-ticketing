@@ -16,7 +16,7 @@ func serveFiles(response http.ResponseWriter, request *http.Request) {
 	http.ServeFile(response, request, "index.html")
 
 	if err := request.ParseForm(); err != nil {
-		fmt.Fprintf(response, "ParseForm() err: %v", err)
+		fmt.Fprintf(response, "Oups...tentez votre chance ! %v", err)
 		return
 	}
 	fmt.Fprintf(response, "Post from website! r.PostFrom = %v\n", request.PostForm)
@@ -26,6 +26,6 @@ func serveFiles(response http.ResponseWriter, request *http.Request) {
 	fmt.Println("Prénom :", request.FormValue("prenom"))
 	fmt.Println("user-password :", request.FormValue("user-password"))
 	fmt.Println("Email:", request.FormValue("email"))
-	fmt.Println("Email:", request.Form.Get("email"))
+	//fmt.Println("Email:", request.Form.Get("email"))
 
 }
