@@ -3,8 +3,6 @@ package main
 import (
 	"fmt"
 	"net/http"
-	//"database/sql"
-	// _ "github.com/go-sql-driver/mysql"
 )
 
 func main() {
@@ -12,13 +10,6 @@ func main() {
 	fmt.Println("Server Starting")
 	http.HandleFunc("/index", serveFiles)
 	http.ListenAndServe(":80", nil)
-
-	/*db, err := sql.Open("mysql",
-		"user:password@tcp(127.0.0.1:3306)/users_ticketing")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer db.Close()*/
 
 }
 
