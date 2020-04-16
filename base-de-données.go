@@ -3,9 +3,7 @@ package main
 import (
 	"database/sql"
 	"fmt"
-	"log"
-
-	_ "github.com/go-sql-driver/mysql"
+	//"github.com/go-sql-driver/mysql"
 )
 
 func main() {
@@ -19,8 +17,10 @@ func main() {
 
 	err = db.Ping()
 	if err != nil {
-		panic(err.Error())
+		fmt.Println(err)
+		return
 	}
+	defer db.Close()
 
 	var (
 		id   int
@@ -28,19 +28,24 @@ func main() {
 	)
 	rows, err := db.Query("select id, name from users_ticketing where id = ?", 2)
 	if err != nil {
-		log.Fatal(err)
+		fmt.Println(err)
+		return
 	}
-	defer rows.Close()
+	defer db.Close()
+
 	for rows.Next() {
 		err := rows.Scan(&id, &name)
 		if err != nil {
-			log.Fatal(err)
+			fmt.Println(err)
+			return
 		}
-		log.Println(id, name)
+		defer db.Close()
 	}
 	err = rows.Err()
 	if err != nil {
-		log.Fatal(err)
+		fmt.Println(err)
+		return
 	}
+	defer db.Close()
 
 }
