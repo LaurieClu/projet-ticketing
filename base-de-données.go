@@ -3,7 +3,8 @@ package main
 import (
 	"database/sql"
 	"fmt"
-	//"github.com/go-sql-driver/mysql"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 func main() {
@@ -11,14 +12,6 @@ func main() {
 		"newproject:12345@tcp(localhost)/publications")
 	if err != nil {
 		fmt.Println(err)
-		return
-	}
-	defer db.Close()
-
-	err = db.Ping()
-	if err != nil {
-		fmt.Println(err)
-		return
 	}
 	defer db.Close()
 
@@ -41,11 +34,18 @@ func main() {
 		}
 		defer db.Close()
 	}
-	err = rows.Err()
+
+	newusers(db, "riendutout")
+}
+
+func newusers(db *sql.DB, name string) {
+	tsql := fmt.Sprintf("INSERT INTO users_ticketing(name) values('%s');",
+		name)
+	_, err := db.Exec(tsql)
 	if err != nil {
 		fmt.Println(err)
 		return
-	}
-	defer db.Close()
 
+	}
+	return
 }
