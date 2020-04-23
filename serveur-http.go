@@ -6,12 +6,10 @@ import (
 )
 
 func main() {
-
+	printAllIDAllName()
 	fmt.Println("Server Starting")
 	http.HandleFunc("/index", serveFiles)
 	http.ListenAndServe(":80", nil)
-	newUsers("GRRRRR")
-	printAllIDAllName()
 }
 
 func serveFiles(response http.ResponseWriter, request *http.Request) {
