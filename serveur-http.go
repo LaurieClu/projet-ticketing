@@ -10,7 +10,8 @@ func main() {
 	fmt.Println("Server Starting")
 	http.HandleFunc("/index", serveFiles)
 	http.ListenAndServe(":80", nil)
-
+	newUsers("GRRRRR")
+	printAllIDAllName()
 }
 
 func serveFiles(response http.ResponseWriter, request *http.Request) {
@@ -24,6 +25,7 @@ func serveFiles(response http.ResponseWriter, request *http.Request) {
 
 	fmt.Println("age :", request.FormValue("Age"))
 	fmt.Println("nom :", request.FormValue("nom"))
+	newUsers(request.FormValue("nom"))
 	fmt.Println("Prénom :", request.FormValue("prenom"))
 	fmt.Println("user-password :", request.FormValue("user-password"))
 	fmt.Println("Email:", request.FormValue("email"))
