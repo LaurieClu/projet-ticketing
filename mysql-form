@@ -1,0 +1,24 @@
+ID
+name
+surname
+birthday
+email
+password
+
+
+
+CREATE TABLE all_users (
+    `id` int AUTO_INCREMENT PRIMARY KEY,
+    `name` VARCHAR(20) NOT NULL DEFAULT '',
+    `surname` VARCHAR(20) NOT NULL DEFAULT '',
+    `birthday` DATE,
+    `email` VARCHAR(50) NOT NULL,
+    `password` VARCHAR(20)
+);
+
+
+INSERT INTO USER(name,surname,birthday,email,password) values('Cyril','Lemagnifique',NOW(),'cyril@gmail.prout','thirteentralala');
+
+'2001-01-30'
+
+INSERT INTO USER(name,surname,birthday,email,password) values('Charlotte','Lamagnifique',NOW() - INTERVAL 20 YEAR,'Charlot@gmail.prout','thirteentralala');
