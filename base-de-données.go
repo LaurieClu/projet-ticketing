@@ -23,7 +23,63 @@ func newUsers(name string) {
 		name)
 	_, err := db.Exec(tsql)
 	if err != nil {
-		fmt.Println("createtsql", err)
+		fmt.Println("createtname", err)
+		return
+
+	}
+	return
+}
+
+func newEmail(email string) {
+	db := createDB()
+	defer db.Close()
+	tsql := fmt.Sprintf("INSERT INTO users_ticketing(email) values('%s');",
+		email)
+	_, err := db.Exec(tsql)
+	if err != nil {
+		fmt.Println("createtemail", err)
+		return
+
+	}
+	return
+}
+
+func newSurname(surname string) {
+	db := createDB()
+	defer db.Close()
+	tsql := fmt.Sprintf("INSERT INTO users_ticketing(surname) values('%s');",
+		surname)
+	_, err := db.Exec(tsql)
+	if err != nil {
+		fmt.Println("createtsurname", err)
+		return
+
+	}
+	return
+}
+
+func newBirthday(birthday string) {
+	db := createDB()
+	defer db.Close()
+	tsql := fmt.Sprintf("INSERT INTO users_ticketing(birthday) values('%s');",
+		birthday)
+	_, err := db.Exec(tsql)
+	if err != nil {
+		fmt.Println("createbirthday", err)
+		return
+
+	}
+	return
+}
+
+func newPassword(password string) {
+	db := createDB()
+	defer db.Close()
+	tsql := fmt.Sprintf("INSERT INTO users_ticketing(password) values('%s');",
+		password)
+	_, err := db.Exec(tsql)
+	if err != nil {
+		fmt.Println("createpassword", err)
 		return
 
 	}
