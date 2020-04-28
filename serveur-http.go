@@ -21,12 +21,15 @@ func serveFiles(response http.ResponseWriter, request *http.Request) {
 	}
 	fmt.Fprintf(response, "Post from website! r.PostFrom = %v\n", request.PostForm)
 
-	fmt.Println("age :", request.FormValue("Age"))
-	fmt.Println("nom :", request.FormValue("nom"))
-	newUsers(request.FormValue("nom"))
-	fmt.Println("Prénom :", request.FormValue("prenom"))
+	fmt.Println("Age:", request.FormValue("Age"))
+	newBirthday(request.FormValue("Age"))
+	fmt.Println("Surname :", request.FormValue("nom"))
+	newSurname(request.FormValue("nom"))
+	fmt.Println("name:", request.FormValue("prenom"))
+	newUsers(request.FormValue("prenom"))
 	fmt.Println("user-password :", request.FormValue("user-password"))
-	fmt.Println("Email:", request.FormValue("email"))
+	newPassword(request.FormValue("user-password"))
+	fmt.Println("email:", request.FormValue("email"))
+	newEmail(request.FormValue("email"))
 	//fmt.Println("Email:", request.Form.Get("email"))
-
 }
