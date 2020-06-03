@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <h1>My To Do List</h1>
+    <link rel="stylesheet" href="style.css" type="text/css" media="screen" charset="utf-8"> 
+    <form action="http://localhost/" method="GET">
+    </head>
+
+    <body>
+        <div class="container">
+        <input type="text" id="Input" placeholder="A faire...">
+    <button>Ajouter</button>
+
+    <h3>A Faire :</h3>
+    <ul id="incomplete-tasks">
+        <li><input type="checkbox">
+            <input type="text"><button class="edit">Ajouter</button>
+            <button class="delete">Supprimer</button></li>
+        <li class="editMode">
+            <input type="checkbox">
+            <label>To do list</label><input type="text" value="to do list"><button class="edit">Ajouter</button>
+            <button class="delete">Supprimer</button></li>
+        
+      </ul>
+
+      <h3>Fait !</h3>
+      <ul id="completed-tasks">
+        <li><input type="checkbox" checked>
+            <label>Etape 1 du projet </label>
+            <input type="text"><button class="edit">Ajouter</button>
+            <button class="delete">Supprimer</button></li>
+      </ul>
+
+      </div>
+    </body>
+    </html>
