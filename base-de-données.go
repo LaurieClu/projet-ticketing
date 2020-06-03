@@ -16,70 +16,14 @@ func createDB() (db *sql.DB) {
 	return db
 }
 
-func newUsers(name string) {
+func newUsers(email, password, surname, name string) {
 	db := createDB()
 	defer db.Close()
-	tsql := fmt.Sprintf("INSERT INTO users_ticketing(name) values('%s');",
-		name)
+	tsql := fmt.Sprintf("INSERT INTO users_ticketing(email,password,surname,name) VALUES ('%v', '%v', '%v', '%v');",
+		email, password, surname, name)
 	_, err := db.Exec(tsql)
 	if err != nil {
-		fmt.Println("createtname", err)
-		return
-
-	}
-	return
-}
-
-func newEmail(email string) {
-	db := createDB()
-	defer db.Close()
-	tsql := fmt.Sprintf("INSERT INTO users_ticketing(email) values('%s');",
-		email)
-	_, err := db.Exec(tsql)
-	if err != nil {
-		fmt.Println("createtemail", err)
-		return
-
-	}
-	return
-}
-
-func newSurname(surname string) {
-	db := createDB()
-	defer db.Close()
-	tsql := fmt.Sprintf("INSERT INTO users_ticketing(surname) values('%s');",
-		surname)
-	_, err := db.Exec(tsql)
-	if err != nil {
-		fmt.Println("createtsurname", err)
-		return
-
-	}
-	return
-}
-
-func newBirthday(birthday string) {
-	db := createDB()
-	defer db.Close()
-	tsql := fmt.Sprintf("INSERT INTO users_ticketing(birthday) values('%s');",
-		birthday)
-	_, err := db.Exec(tsql)
-	if err != nil {
-		fmt.Println("createbirthday", err)
-		return
-
-	}
-	return
-}
-
-func newPassword(password string) {
-	db := createDB()
-	defer db.Close()
-	tsql := fmt.Sprintf("INSERT INTO users_ticketing(password) values('%s');",
-		password)
-	_, err := db.Exec(tsql)
-	if err != nil {
-		fmt.Println("createpassword", err)
+		fmt.Println("createnewusers", err)
 		return
 
 	}
@@ -89,24 +33,25 @@ func newPassword(password string) {
 // printAllIDAllName parcour et affiche tous les ID & name de la BDD
 func printAllIDAllName() {
 	var (
-		id   int
-		name string
+		id    int
+		name  string
+		email string
 	)
 	db := createDB()
 	defer db.Close()
-	rows, err := db.Query("select id, name from users_ticketing")
+	rows, err := db.Query("select id, name, email  from users_ticketing")
 	if err != nil {
 		fmt.Println("create rowsquery", err)
 		return
 	}
 
 	for rows.Next() {
-		err := rows.Scan(&id, &name)
+		err := rows.Scan(&id, &name, &email)
 		if err != nil {
 			fmt.Println("create rowsscan", err)
 			return
 		}
-		fmt.Println(id, name)
+		fmt.Println(id, name, email)
 
 	}
 }
